@@ -22,7 +22,9 @@ class CourseOrg(models.Model):
     address = models.CharField(max_length=1)
     city = models.ForeignKey(CityDict,verbose_name='所在城市')
     add_time = models.DateTimeField(default=datetime.now)
-
+    class Meta:
+        verbose_name = '课程机构'
+        verbose_name_plural = verbose_name
 
 class Teacher(models.Model):
     org = models.ForeignKey(CourseOrg,verbose_name='所属机构')

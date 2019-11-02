@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-# import xadmin
+from django.views.generic import TemplateView
+from users import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url('^login/$', views.user_login, name='login')
 ]
