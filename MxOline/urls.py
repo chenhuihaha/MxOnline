@@ -20,6 +20,8 @@ from users import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url('^login/$', views.user_login, name='login')
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^login/$', views.user_login, name='login'),
+    url(r'^register/$', views.user_register, name='register'),
+    url(r'^forgetpwd/$', views.user_forgetpwd, name='forgetpwd')
 ]

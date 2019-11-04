@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
+# from django.views.generic.base import View
+from django.db.models import Q
 
 
 # Create your views here.
@@ -18,3 +20,12 @@ def user_login(request):
             return render(request, 'index.html')
         else:
             return render(request, 'login.html', {})
+
+
+def user_register(request):
+    return render(request, 'register.html', {})
+
+
+def user_forgetpwd(request):
+    if request.method == 'GET':
+        return render(request, 'forgetpwd.html', {})
