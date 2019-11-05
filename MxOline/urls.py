@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.static import serve  # 处理静态文件
 from django.views.generic import TemplateView
@@ -27,7 +27,9 @@ urlpatterns = [
     url(r'^login/$', views.user_login, name='login'),
     url(r'^register/$', views.user_register, name='register'),
     url(r'^forgetpwd/$', views.user_forgetpwd, name='forgetpwd'),
-    url(r'^org_list/$', OrgView.as_view(), name='org_list'),
+
+    # 课程机构url的分布式路由
+    url(r'org/', include('organization.urls', namespace='org')),
     # 配置上传文件的访问处理函数
-    url(r'media/(?P<path>.*)$', serve,{'document_root':MEDIA_ROOT})
+    url(r'media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 ]
